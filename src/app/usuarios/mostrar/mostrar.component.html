@@ -1,0 +1,50 @@
+<div class="container">
+  
+  <br>
+    <div class="row" >
+        <div class="col-12"  >
+          <button style="float: right;" [routerLink]="['/registrar']" type="button" class="btn btn-secondary">Nuevo <i class="fa fa-plus-circle"></i></button>
+          <input type="text" placeholder="Buscar por nombre o username" class="form-control col-6">  
+          </div>
+    </div>
+  <br>
+<div class="row">
+    <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Username</th>
+            <th scope="col">Tipo</th>
+            <th scope="col">Direccion</th>
+            <th scope="col">Telefono</th>
+            <th scope="col">Estado</th>
+            <th scope="col-sm-2">Acctiones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of Usuarios">
+            <td >{{user.nombre}}</td>
+            <td>{{user.nick}}</td>
+            <td>{{user.tipo}}</td>
+            <td *ngIf="user.direccion">{{user.direccion}}</td>
+            <td *ngIf="!user.direccion">No disponible</td>
+            <td *ngIf="user.telefono">{{user.telefono}}</td>
+            <td *ngIf="!user.telefono">No disponible</td>
+            <td> 
+              <button type="button" class="btn btn-secondary">
+                <i *ngIf="user.estado == 1" class="fa fa-toggle-on"></i>
+                <i *ngIf="user.estado == 2" class="fa fa-toggle-off"></i> 
+              </button>
+            </td>
+            <td>
+              <button type="button" style="margin-right:4px" class="btn btn-primary" > <i class="fa fa-edit" ></i></button>
+              <button type="button" class="btn btn-danger"> <i class="fa fa-trash"></i></button>
+            </td>
+          </tr>
+          <tbody>
+   
+      </table>
+
+
+</div>
+</div>
