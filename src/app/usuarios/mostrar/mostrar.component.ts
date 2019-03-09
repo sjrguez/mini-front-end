@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { UsuariosService } from '../../servicio/usuarios.service';
+import { LoginService } from '../../servicio/login.service';
 
 @Component({
   selector: 'app-mostrar',
@@ -9,7 +10,7 @@ import { UsuariosService } from '../../servicio/usuarios.service';
 export class MostrarComponent implements OnInit, OnDestroy {
   
 
-  constructor(public _usuarioService: UsuariosService) { }
+  constructor(public _usuarioService: UsuariosService,public _Login:LoginService) { }
 
   ngOnInit() {
     this._usuarioService.mostrarUsuarios()

@@ -6,6 +6,7 @@ import {MostrarComponent} from './mostrar/mostrar.component';
 import {RegistrarComponent} from './registrar/registrar.component';
 
 import { USUARIO_ROUTER } from './usuario.router';
+import { LoginGuard } from '../guardias/login.guard';
 
 @NgModule({
   declarations: [

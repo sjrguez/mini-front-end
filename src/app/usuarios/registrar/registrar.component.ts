@@ -3,6 +3,8 @@ import { UsuariosService } from '../../servicio/usuarios.service';
 
 import Swal from 'sweetalert2';
 import {isNullOrUndefined } from 'util';
+import { LoginService } from '../../servicio/login.service';
+
 @Component({
   selector: 'app-registrar',
   templateUrl: './registrar.component.html',
@@ -13,7 +15,7 @@ export class RegistrarComponent implements OnInit {
 
   confirmarPass = '';
 // tslint:disable-next-line: variable-name
-  constructor(public _usuarioService: UsuariosService) { }
+  constructor(public _usuarioService: UsuariosService, public _Login:LoginService) { }
 
   enviar() {
     const PASS = this._usuarioService.Usuario.password;
