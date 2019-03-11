@@ -1,5 +1,4 @@
 import { Routes, RouterModule } from '@angular/router';
-import { NgModule } from '@angular/core';
 
 import {UsuariosComponent} from './usuarios/usuarios.component'
 

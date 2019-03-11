@@ -39,9 +39,10 @@ export class RegistrarComponent implements OnInit {
 
 
   ngOnInit() {
+    this._Login.cargarUsuario()
   }
 
 
-  
+
 
 }

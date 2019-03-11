@@ -1,6 +1,5 @@
 import {RouterModule, Routes} from '@angular/router';
 
-import {UsuariosComponent} from './usuarios.component';
 import {MostrarComponent} from './mostrar/mostrar.component';
 import {RegistrarComponent} from './registrar/registrar.component';
 import { LoginGuard } from '../guardias/login.guard';

@@ -8,12 +8,13 @@ import { LoginService } from '../../servicio/login.service';
   styleUrls: ['./mostrar.component.css']
 })
 export class MostrarComponent implements OnInit, OnDestroy {
-  
+
 
   constructor(public _usuarioService: UsuariosService,public _Login:LoginService) { }
 
   ngOnInit() {
     this._usuarioService.mostrarUsuarios()
+    this._Login.cargarUsuario()
   }
 
   obtenerUsuario(data) {
@@ -35,10 +36,10 @@ export class MostrarComponent implements OnInit, OnDestroy {
   }
 
   buscador(buscar) {
-    const VERIFICAR = buscar.replace(/ /g, ''); 
+    const VERIFICAR = buscar.replace(/ /g, '');
     if (VERIFICAR == undefined || VERIFICAR == "" || VERIFICAR == " ") {
       this._usuarioService.mostrarUsuarios()
-      return; 
+      return;
     }
     this._usuarioService.buscarUsuario(buscar);
   }

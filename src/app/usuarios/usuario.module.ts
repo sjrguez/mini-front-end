@@ -16,7 +16,7 @@ import { LoginGuard } from '../guardias/login.guard';
   exports:[
     MostrarComponent,
     RegistrarComponent
-  ], 
+  ],
   imports: [
     CommonModule,
     USUARIO_ROUTER,
