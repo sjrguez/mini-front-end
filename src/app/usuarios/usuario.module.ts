@@ -7,11 +7,13 @@ import {RegistrarComponent} from './registrar/registrar.component';
 
 import { USUARIO_ROUTER } from './usuario.router';
 import { LoginGuard } from '../guardias/login.guard';
+import { TipoUsuarioComponent } from './tipo-usuario/tipo-usuario.component';
 
 @NgModule({
   declarations: [
     MostrarComponent,
-    RegistrarComponent
+    RegistrarComponent,
+    TipoUsuarioComponent
   ],
   exports:[
     MostrarComponent,

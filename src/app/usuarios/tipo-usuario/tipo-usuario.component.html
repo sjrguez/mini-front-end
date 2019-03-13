@@ -1,0 +1,59 @@
+<div class="row">
+    <div class="col-sm-12">
+        <span style="font-size: 36px">
+            <strong>
+          Tipos de Usuarios
+        </strong>
+        </span>
+        <button style="float: right;" type="button" class="btn btn-danger"> <i class="fa fa-sign-out-alt"></i></button>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-12">
+        <input style="float: right" type="text" #buscar placeholder="Buscar por nombre" class="form-control col-6">
+    </div>
+</div>
+<br>
+<div class="row">
+    <!-- Registro -->
+    <div class="col-lg-4">
+        <div class="container">
+            <h4> <strong>  Registrar tipo</strong></h4>
+            <form ngNativeValidate>
+                <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input type="email" class="form-control col-sm-10" id="nombre" placeholder="Nombre de tipo de usuario">
+                </div>
+
+
+                <button type="submit" class="btn btn-secondary">Guardar</button>
+            </form>
+        </div>
+    </div>
+    <!-- Visualizar tipos -->
+
+    <div class="col-lg-8">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Nombre</th>
+                    <th></th>
+                    <th scope="col-sm-2">Acctiones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Administrador</td>
+                    <td></td>
+                    <td>
+                        <button type="button" style="margin-right:4px" class="btn btn-primary" [routerLink]="['/modificar']"> <i class="fa fa-edit" ></i></button>
+                        <button type="button" class="btn btn-danger"> <i class="fa fa-trash"></i></button>
+                    </td>
+                </tr>
+                <tbody>
+
+        </table>
+    </div>
+
+</div>
