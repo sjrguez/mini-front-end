@@ -11,6 +11,7 @@
 <br>
 <div class="row">
     <div class="col-12">
+
         <input style="float: right" type="text" #buscar placeholder="Buscar por nombre" class="form-control col-6">
     </div>
 </div>
@@ -19,15 +20,17 @@
     <!-- Registro -->
     <div class="col-lg-4">
         <div class="container">
-            <h4> <strong>  Registrar tipo</strong></h4>
-            <form ngNativeValidate>
+            <h4> <strong>  {{titulo}} tipo</strong></h4>
+            <form ngNativeValidate (ngSubmit)="guardar()">
                 <div class="form-group">
                     <label for="nombre">Nombre</label>
-                    <input type="email" class="form-control col-sm-10" id="nombre" placeholder="Nombre de tipo de usuario">
+                    <input type="text" [(ngModel)]="tipoUsu.nombre" name="nombre" required class="form-control col-sm-10" id="nombre" placeholder="Nombre de tipo de usuario">
                 </div>
+                <button style="margin-right: 5px" type="button" [routerLink]="['/mostrar']" type="button" class="btn btn-secondary">
+           Volver
+       </button>
 
-
-                <button type="submit" class="btn btn-secondary">Guardar</button>
+                <button type="submit" class="btn btn-secondary">Guardar <i class="fa fa-plus-circle"></i></button>
             </form>
         </div>
     </div>
@@ -43,8 +46,8 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Administrador</td>
+                <tr *ngFor="let tipo of _Tipos.tipoUsuarios">
+                    <td>{{tipo.nombre}}</td>
                     <td></td>
                     <td>
                         <button type="button" style="margin-right:4px" class="btn btn-primary" [routerLink]="['/modificar']"> <i class="fa fa-edit" ></i></button>

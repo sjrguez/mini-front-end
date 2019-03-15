@@ -2,14 +2,14 @@ import { Injectable } from '@angular/core';
 import { Usu, UsuariosService } from './usuarios.service';
 import {HttpClient} from '@angular/common/http';
 import Swal from 'sweetalert2';
-import { Router } from '@angular/router';
 import { URL } from '../Global/enviment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService extends UsuariosService {
-  Usuario: Usu = {
+
+  User: Usu = {
     nombre: '',
     nick: '',
     password: '',
@@ -17,14 +17,15 @@ export class LoginService extends UsuariosService {
     telefono: '',
     tipo: ''
   };
-  constructor(public _http: HttpClient, public Router: Router) {
+  // tslint:disable-next-line:variable-name
+  constructor(public _http: HttpClient) {
       super(_http);
   }
 
   Loguear(data) {
     this._Http.post(`${URL}/login`, data).toPromise()
     .then((usuario: any) => {
-      this.Router.navigate(['/mostrar']);
+      location.href = '/mostrar';
       this.Usuario = usuario.data;
       localStorage.setItem('usuario', JSON.stringify(usuario.data));
 

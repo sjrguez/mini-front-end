@@ -6,7 +6,6 @@ import {MostrarComponent} from './mostrar/mostrar.component';
 import {RegistrarComponent} from './registrar/registrar.component';
 
 import { USUARIO_ROUTER } from './usuario.router';
-import { LoginGuard } from '../guardias/login.guard';
 import { TipoUsuarioComponent } from './tipo-usuario/tipo-usuario.component';
 
 @NgModule({
@@ -15,10 +14,10 @@ import { TipoUsuarioComponent } from './tipo-usuario/tipo-usuario.component';
     RegistrarComponent,
     TipoUsuarioComponent
   ],
-  exports:[
+  exports: [
     MostrarComponent,
     RegistrarComponent
-  ], 
+  ],
   imports: [
     CommonModule,
     USUARIO_ROUTER,

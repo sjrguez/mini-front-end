@@ -15,23 +15,24 @@ export class RegistrarComponent implements OnInit {
 
   confirmarPass = '';
 // tslint:disable-next-line: variable-name
-  constructor(public _usuarioService: UsuariosService, public _Login:LoginService) { }
+  constructor(public _usuarioService: UsuariosService, public _Login: LoginService) { }
 
   enviar() {
     const PASS = this._usuarioService.Usuario.password;
     const ID = this._usuarioService.Usuario._id;
-    if ( PASS != this.confirmarPass) {
+    if ( PASS !== this.confirmarPass) {
       return Swal.fire({text: 'Password no coinciden', type: 'info'});
     }
-    if(isNullOrUndefined(ID)){
+    console.log(ID)
+    if (isNullOrUndefined(ID)) {
       this._usuarioService.registrarUsuario(this._usuarioService.Usuario)
-      .then((res:any) => {
+      .then((res: any) => {
         Swal.fire({text: res.mensaje, type: 'success'});
         this._usuarioService.LimpiarObjeto();
       }).catch(error => console.log(error));
-    }else{
-      this._usuarioService.modificarUsuario(ID,this._usuarioService.Usuario)
-      .then((res:any)=>{
+    } else {
+      this._usuarioService.modificarUsuario(ID, this._usuarioService.Usuario)
+      .then((res: any) => {
         Swal.fire({text: res.mensaje, type: 'success'});
       }).catch(error => console.log(error));
     }
@@ -39,9 +40,10 @@ export class RegistrarComponent implements OnInit {
 
 
   ngOnInit() {
+    this._Login.cargarUsuario();
   }
 
 
-  
+
 
 }
