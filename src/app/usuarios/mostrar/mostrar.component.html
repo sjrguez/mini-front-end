@@ -35,7 +35,7 @@
                 <tr *ngFor="let user of _usuarioService.Usuarios">
                     <td>{{user.nombre}}</td>
                     <td>{{user.nick}}</td>
-                    <td></td>
+                    <td> {{ user.tipo.nombre }}</td>
                     <td *ngIf="user.direccion">{{user.direccion}}</td>
                     <td *ngIf="!user.direccion">No disponible</td>
                     <td *ngIf="user.telefono">{{user.telefono}}</td>

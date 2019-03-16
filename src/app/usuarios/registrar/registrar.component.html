@@ -43,10 +43,10 @@
                         <label for="tipo">Tipo de usuario</label>
 
                         <select [(ngModel)]="_usuarioService.Usuario.tipo" name="tipo" class="form-control" required id="tipo">
-  <option value="">----Seleccione----</option>
-  <option value="Administrador">Administrador</option>
-  <option value="User">User</option>
-</select>
+                        <option value="">----Seleccione----</option>
+                        <option *ngFor="let tipo of _Tipo.tipoUsuarios" [value]="tipo._id">{{tipo.nombre}}</option>
+
+                        </select>
                     </div>
                 </div>
                 <div class="row">
@@ -54,8 +54,7 @@
                         <button [routerLink]="['/mostrar']" type="button" class="btn btn-secondary"> <i class="fa fa-arrow-left"></i> Volver</button>
                     </div>
                     <div class="col-sm-1">
-                        <button *ngIf="_usuarioService.Usuario._id" type="submit" class="btn btn-primary">Modificar</button>
-                        <button *ngIf="!_usuarioService.Usuario._id" type="submit" class="btn btn-primary">Registrar</button>
+                        <button type="submit" class="btn btn-primary">{{titulo}}</button>
                     </div>
                 </div>
             </form>

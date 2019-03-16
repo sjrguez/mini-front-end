@@ -12,7 +12,7 @@
 <div class="row">
     <div class="col-12">
 
-        <input style="float: right" type="text" #buscar placeholder="Buscar por nombre" class="form-control col-6">
+        <input style="float: right" #data (keyup)="buscarTipo(data.value)" type="text" #buscar placeholder="Buscar por nombre" class="form-control col-6">
     </div>
 </div>
 <br>
@@ -50,8 +50,8 @@
                     <td>{{tipo.nombre}}</td>
                     <td></td>
                     <td>
-                        <button type="button" style="margin-right:4px" class="btn btn-primary" [routerLink]="['/modificar']"> <i class="fa fa-edit" ></i></button>
-                        <button type="button" class="btn btn-danger"> <i class="fa fa-trash"></i></button>
+                        <button type="button" (click)="obtenerTipoUsuario(tipo)" style="margin-right:4px" class="btn btn-primary"> <i class="fa fa-edit" ></i></button>
+                        <button type="button" (click)="_Tipos.eliminarUsuario(tipo._id)" class="btn btn-danger"> <i class="fa fa-trash"></i></button>
                     </td>
                 </tr>
                 <tbody>
