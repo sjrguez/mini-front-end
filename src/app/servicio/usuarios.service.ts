@@ -40,24 +40,21 @@ s
   mostrarUsuarios() {
      this._Http.get(`${URL}/usuario`).subscribe((res: any) => {
       this.Usuarios = res.data;
-      console.log(res.data);
     }, e => console.log(e));
   }
 
   registrarUsuario(data) {
-    const SESION = JSON.parse(localStorage.getItem('usuario'));
-    data.token  = SESION.token;
-    return this._Http.post(`${URL}/usuario`, data).toPromise();
+    const TOKEN = JSON.parse(localStorage.getItem('token'));
+    return this._Http.post(`${URL}/usuario?token=${TOKEN}`, data).toPromise();
   }
 
   modificarUsuario(id, data) {
-    const SESION = JSON.parse(localStorage.getItem('usuario'));
-    data.token  = SESION.token;
-    return this._Http.put(`${URL}/usuario/${id}`, data).toPromise();
+    const TOKEN = JSON.parse(localStorage.getItem('token'));
+    return this._Http.put(`${URL}/usuario/${id}?token=${TOKEN}`, data).toPromise();
   }
 
   eliminarUsuario(id) {
-    const SESION = JSON.parse(localStorage.getItem('usuario'));
+    const TOKEN = JSON.parse(localStorage.getItem('token'));
     Swal.fire({
       title: 'Desea eliminar este usuario?',
       text: 'No podras recuperarlo una vez eliminado!',
@@ -68,7 +65,7 @@ s
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.value) {
-        this._Http.delete(`${URL}/usuario/${id}/${SESION.token}`).toPromise()
+        this._Http.delete(`${URL}/usuario/${id}?token=${TOKEN}`).toPromise()
         .then((res: any) => {
           Swal.fire({text: res.mensaje, type: 'success'});
           this.mostrarUsuarios();
@@ -82,9 +79,8 @@ s
   }
 
   buscarUsuario(data) {
-    const SESION = JSON.parse(localStorage.getItem('usuario'));
-    data.token  = SESION.token || false;
-    this._Http.post(`${URL}/usuario/buscar`, {nombre: data, token: data.token}).subscribe((res: any) => {
+    const TOKEN = JSON.parse(localStorage.getItem('token'));
+    this._Http.post(`${URL}/usuario/buscar?token=${TOKEN}`, {nombre: data, token: data.token}).subscribe((res: any) => {
       this.Usuarios = res.data;
     }, e => console.log(e));
   }

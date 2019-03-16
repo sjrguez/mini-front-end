@@ -28,7 +28,8 @@ export class LoginService extends UsuariosService {
       location.href = '/mostrar';
       this.Usuario = usuario.data;
       localStorage.setItem('usuario', JSON.stringify(usuario.data));
-
+      localStorage.setItem('token', JSON.stringify(usuario.token));
+ 
     }).catch(e => {
       const ERROR = e.error;
       Swal.fire({text: ERROR.mensaje, type: 'error'});
@@ -42,6 +43,7 @@ export class LoginService extends UsuariosService {
   }
   logOut() {
     localStorage.removeItem('usuario');
+    localStorage.removeItem('token');
     this.Usuario = {
       nombre: '',
       nick: '',

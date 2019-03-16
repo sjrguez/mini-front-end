@@ -16,11 +16,14 @@ export class TiposUsuarioService {
   }
 
   registrarTipoUsuario(data){
-      return this._http.post(`${URL}/tipoUsuario`,data).toPromise()
+    const TOKEN = JSON.parse(localStorage.getItem('token'));
+      return this._http.post(`${URL}/tipoUsuario?token=${TOKEN}`,data).toPromise()
   }
 
   modificarTipoUsuario(id,data){
-    return this._http.put(`${URL}/tipoUsuario/${id}`,data).toPromise()
+    const TOKEN = JSON.parse(localStorage.getItem('token'));
+
+    return this._http.put(`${URL}/tipoUsuario/${id}?token=${TOKEN}`,data).toPromise()
   }
 
 
@@ -32,10 +35,12 @@ export class TiposUsuarioService {
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
+      confirmButtonText: 'Si, eliminalo!'
     }).then((result) => {
       if (result.value) {
-        this._http.delete(`${URL}/tipoUsuario/${id}`).toPromise()
+    const TOKEN = JSON.parse(localStorage.getItem('token'));
+
+        this._http.delete(`${URL}/tipoUsuario/${id}?token=${TOKEN}`).toPromise()
         .then((res: any) => {
           Swal.fire({text: res.mensaje, type: 'success'});
           this.mostrarTiposUsuarios();
@@ -48,7 +53,8 @@ export class TiposUsuarioService {
   }
   
   buscarTipoUsuario(buscar){
-    this._http.post(`${URL}/tipoUsuario/buscar`,{nombre:buscar}).subscribe(((datos:any) => {
+    const TOKEN = JSON.parse(localStorage.getItem('token'));
+    this._http.post(`${URL}/tipoUsuario/buscaro?token=${TOKEN}`,{nombre:buscar}).subscribe(((datos:any) => {
       this.tipoUsuarios = datos.data
       
     }), e => console.log(e));
