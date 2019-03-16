@@ -28,17 +28,19 @@ export class UsuariosService  {
     password: '',
     direccion: '',
     telefono: '',
-    tipo: ''
+    tipo: '',
+    _id: ''
+
   };
 // tslint:disable-next-line: variable-name
   constructor(public _Http: HttpClient) {
 
   }
-
-
+s
   mostrarUsuarios() {
      this._Http.get(`${URL}/usuario`).subscribe((res: any) => {
       this.Usuarios = res.data;
+      console.log(res.data);
     }, e => console.log(e));
   }
 
